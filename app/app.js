@@ -8,10 +8,10 @@ $(document).ready(function() {
         var counter = setInterval(timer, 1000);
         breakTime *= 60;
         count *= 60;
-//---------------TESTING PURPOSES--------------------
-        count = 10
-        breakTime = 10
-//---------------------------------------------------
+        //---------------TESTING PURPOSES--------------------
+        // count = 5
+        // breakTime = 5
+        //---------------------------------------------------
 
         function timer() {
             //hide variables
@@ -51,9 +51,6 @@ $(document).ready(function() {
                 }
             }
         }
-
-
-
     });
 
     $("#reset").click(function() {
@@ -67,6 +64,9 @@ $(document).ready(function() {
 
 
     $("#minus5Clock").click(function() {
+        if (count === 5) {
+            alert("Can't go below 5 minutes")
+        }
         if (count > 5) {
             count -= 5;
             $("#num").html(count);
@@ -74,6 +74,9 @@ $(document).ready(function() {
     })
 
     $("#minus5Break").click(function() {
+        if (breakTime === 5) {
+            alert("Can't go below 5 minutes")
+        }
         if (breakTime > 5) {
             breakTime -= 5;
             $("#breakNum").html(breakTime);

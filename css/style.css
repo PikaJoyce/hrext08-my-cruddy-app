@@ -18,47 +18,54 @@ state changing styling
 
 
 
-body{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-image: url("https://ih0.redbubble.net/image.450886651.0130/flat,550x550,075,f.u2.jpg");
-  background-size:50%;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: start;
-  color: black;
-  font-family: Comic Sans MS, cursive, sans-serif;
-  font-size: 12px
+body {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-image: url("https://ih0.redbubble.net/image.450886651.0130/flat,550x550,075,f.u2.jpg");
+    background-size: 50%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: start;
+    color: black;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 15px
 }
 
 h1 {
-	display: flex;
-	justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 
 }
 
 h2 {
-  display:inline-flex;
-  font-size: 30px
+    display: inline-flex;
+    font-size: 30px
 }
 
 
 button {
-	display: flex;
-	justify-content: center;
-	border: none;
-	background: pink;
-	color: black;
-	font-family: Comic Sans MS, cursive, sans-serif;
-	font-weight: 100;
-	font-size: 18px;
-	padding: 10px;
-	border-radius: 20px;
-	display: inline;
-	border: none;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background: pink;
+    color: black;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 12px;
+    display: inline;
+    border: none;
+}
+
+button:hover {
+    -webkit-transition-duration: 1s;
+    transition-duration: 0.8s;
+    background-color: pink;
+    color: white;
 }
 
 #start {
-  margin:10px;
+    margin: 10px;
 }
