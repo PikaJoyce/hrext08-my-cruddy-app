@@ -13,51 +13,52 @@ state changing styling
 	FLEXBOX CONTAINER
 	guide: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 */
-.container {
+/*https://ih1.redbubble.net/image.450886543.0130/raf,750x1000,075,t,fafafa:ca443f4786.jpg*/
+
+
+
+
+body{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-image: url("https://ih0.redbubble.net/image.450886651.0130/flat,550x550,075,f.u2.jpg");
+  background-size:50%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: start;
+  color: black;
+  font-family: Comic Sans MS, cursive, sans-serif;
+  font-size: 12px
+}
+
+h1 {
 	display: flex;
-}
-
-/*
-	TABLE STYLING 
-*/
-table {
-	width: 400px;
-	margin-left: 30px;
-}
-
-table,
-td {
-    border: 1px solid #333;
-}
-
-thead,
-tfoot {
-    background-color: #333;
-    color: #fff;
-}
-
-/*
-	FORM STYLING 
-	TODO: validation checking styling 
-*/
-form.form {
-}
-
-div.form {
-}
-
-label, input {
-    margin-bottom: 10px;
-    width: 125px;
-}
-
-label {
-	display: inline-block;
-    padding-right: 10px;
-    width: 80px;
+	justify-content: space-around;
 
 }
 
-button.button {
-	margin-right: 20px;
+h2 {
+  display:inline-flex;
+  font-size: 30px
+}
+
+
+button {
+	display: flex;
+	justify-content: center;
+	border: none;
+	background: pink;
+	color: black;
+	font-family: Comic Sans MS, cursive, sans-serif;
+	font-weight: 100;
+	font-size: 18px;
+	padding: 10px;
+	border-radius: 20px;
+	display: inline;
+	border: none;
+}
+
+#start {
+  margin:10px;
 }

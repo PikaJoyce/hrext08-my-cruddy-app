@@ -1,109 +1,93 @@
-var loadLocalStorage = function () {
-	var keys = Object.keys(localStorage)
-	var htmlString = '';
-	for (var i = 0; i < keys.length; i++) {
-		htmlString += `<tr><td>${keys[i]}</td><td>${localStorage[keys[i]]}</tr></tr>`;
-	}
-	$('tbody').html(htmlString)
-};
+$(document).ready(function() {
+    $("#reset").hide();
+    var alarm = new Audio('./chime.mp3')
+    var count = parseInt($("#num").html());
+    var breakTime = parseInt($("#breakNum").html());
 
-var updateStatusLabel = function(message) {
-	$('#statusLabel').text('Status: ' + message);
-}
+    $("#start").click(function() {
+        var counter = setInterval(timer, 1000);
+        breakTime *= 60;
+        count *= 60;
+//---------------TESTING PURPOSES--------------------
+        count = 10
+        breakTime = 10
+//---------------------------------------------------
 
- //jQuery document ready initialization stuff
- ////button and form event handlers
- // logic for determining action probably needs to go in the event handler
-$(document).ready(function () {
-	loadLocalStorage();
+        function timer() {
+            //hide variables
+            $("#start, #minus5Clock, #add5Clock, #minus5Break, #add5Break, #breakNum ,#title1, #title2").hide()
+            $("#timeType").show();
+            $("#timeType").html("Session Time: ");
+            count -= 1;
+            if (count === 0) {
+                clearInterval(counter);
+                var startBreak = setInterval(breakTimer, 1000);
+                $("#num").hide();
+                alarm.play();
+                alert("Take A Break!")
+            }
+            if (count % 60 >= 10) {
+                $("#num").html(Math.floor(count / 60) + ":" + count % 60);
+            } else {
+                $("#num").html(Math.floor(count / 60) + ":" + "0" + count % 60);
+            }
 
-	$('#btn-create').on('click', function(e) {
-		var key = $('#key').val();
-		var value = $('#value').val();
-		var keyExists = localStorage.getItem(key) !== null;
-
-		if (keyExists) {
-			updateStatusLabel('key already exists, please use update button instead! :D');
-		} else if (key === '') {
-			updateStatusLabel('invalid input!')
-		}else {
-			createEntry(key, value);
-			updateStatusLabel('key created - ' + key);
-		}
-
-		loadLocalStorage();
-	});
-
-	$('#btn-update').on('click', function(e) {
-		var key = $('#key').val();
-		var value = $('#value').val();
-		var existingValue = localStorage.getItem(key)
-		var keyExists = existingValue !== null;
-
-		if (value === existingValue) {
-			updateStatusLabel('key not updated - that value already exists silly! xD')
-		} else if (keyExists) {
-			updateEntry(key, value);
-			updateStatusLabel('key updated - ' + key);
-		} else if (key === '') {
-			updateStatusLabel('invalid input!')
-		} else {
-			updateStatusLabel('key doesn\'t exist, please use create button instead! :D');
-		}		
-		
-		loadLocalStorage();		
-	});
-
-	$('#btn-delete').on('click', function(e) {
-		var key = $('#key').val();
-		var value = $('#value').val();
-		var keyExists = localStorage.getItem(key) !== null;
-
-		if (keyExists) {
-			removeEntry(key);
-			updateStatusLabel('key removed - ' + key);
-		} else if (key === '') {
-			updateStatusLabel('invalid input!')
-		} else {
-			updateStatusLabel('key doesn\'t exist, nothing removed. :|');
-		}
-
-		loadLocalStorage();
-	});	
-
-});
-/*
+            function breakTimer() {
+                $("#timeType").html("Break Time: ");
+                $("#breakNum").show();
+                $("#timeType").show();
+                breakTime -= 1
+                if (breakTime === 0) {
+                    clearInterval(startBreak);
+                    $("#reset").show();
+                    $("#breakNum, #timeType").hide();
+                    alarm.play();
+                    alert("Break Time Is Over!!!!!!")
+                }
+                if (breakTime % 60 >= 10) {
+                    $("#breakNum").html(Math.floor(breakTime / 60) + ":" + breakTime % 60);
+                } else {
+                    $("#breakNum").html(Math.floor(breakTime / 60) + ":" + "0" + breakTime % 60);
+                }
+            }
+        }
 
 
 
-When an input element is given a name, that name becomes a property of the owning form element's HTMLFormElement.elements property. That means if you have an input whose name is set to guest and another whose name is hat-size, the following code can be used:
+    });
 
-let form = document.querySelector("form");
-let guestName = form.elements.guest;
-let hatSize = form.elements["hat-size"];
-*/
+    $("#reset").click(function() {
+        count = 5;
+        breakTime = 5;
+        $("#num").html(count);
+        $("#breakNum").html(breakTime);
+        $("#start, #minus5Clock, #add5Clock, #minus5Break, #add5Break, #breakNum ,#num, #title1, #title2").show()
+        $("#reset, #timeType").hide();
+    });
 
-/*
-PAGE CONTENT STUFF
-*/
-//something to update the table every time localStorage changes
 
-//localStorage stuff
-//https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
-////create new entry
-//localStorage.setItem(key, value)
-var createEntry = function(key, value) {
-	return localStorage.setItem(key, value);
-}
+    $("#minus5Clock").click(function() {
+        if (count > 5) {
+            count -= 5;
+            $("#num").html(count);
+        }
+    })
 
-////Update existing entry
-//localStorage.setItem(key, value)
-var updateEntry = function(key, value) {
-	return localStorage.setItem(key, value);
-}
+    $("#minus5Break").click(function() {
+        if (breakTime > 5) {
+            breakTime -= 5;
+            $("#breakNum").html(breakTime);
+        }
+    })
 
-////delete existing entry
-//localStorage.removeItem(key)
-var removeEntry = function(key) {
-	return localStorage.removeItem(key);
-}
+    $("#add5Clock").click(function() {
+        count += 5;
+        $("#num").html(count);
+    })
+
+    $("#add5Break").click(function() {
+        breakTime += 5;
+        $("#breakNum").html(breakTime);
+    })
+
+})
