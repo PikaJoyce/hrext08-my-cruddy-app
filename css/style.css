@@ -1,22 +1,10 @@
-/*
-- [ ] UI/UX considerations (how are we going to use this)
-
-nice contrasting color pallet
-a form that doenst look like its from a circa 2001 webpage
-
-
-advanced content
-state changing styling
-*/
-
-/*
-	FLEXBOX CONTAINER
-	guide: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-*/
-/*https://ih1.redbubble.net/image.450886543.0130/raf,750x1000,075,t,fafafa:ca443f4786.jpg*/
-
-
-
+.container {
+    padding: 0px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
 
 body {
     display: flex;
@@ -28,21 +16,30 @@ body {
     background-repeat: no-repeat;
     background-position: start;
     color: black;
-    font-family: Comic Sans MS, cursive, sans-serif;
-    font-size: 15px
+    font-size: 15px;
 }
 
 h1 {
-    display: flex;
-    justify-content: space-around;
-
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    font-weight: 100;
+    padding: 0px;
+    margin: 0px 10px;
 }
 
 h2 {
     display: inline-flex;
-    font-size: 30px
+    font-size: 25px;
+    font-family: Comic Sans MS, sans-serif;
 }
 
+p {
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    font-weight: lighter;
+    padding: 0px;
+    margin: 0px 10px;
+}
 
 button {
     display: flex;
@@ -50,9 +47,9 @@ button {
     border: none;
     background: pink;
     color: black;
-    font-family: Comic Sans MS, cursive, sans-serif;
+    font-family: Comic Sans MS, sans-serif;
     font-weight: 100;
-    font-size: 18px;
+    font-size: 20px;
     padding: 10px;
     border-radius: 12px;
     display: inline;

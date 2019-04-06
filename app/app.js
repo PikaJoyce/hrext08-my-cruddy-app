@@ -8,11 +8,6 @@ $(document).ready(function() {
         var counter = setInterval(timer, 1000);
         breakTime *= 60;
         count *= 60;
-        //---------------TESTING PURPOSES--------------------
-        // count = 5
-        // breakTime = 5
-        //---------------------------------------------------
-
         function timer() {
             //hide variables
             $("#start, #minus5Clock, #add5Clock, #minus5Break, #add5Break, #breakNum ,#title1, #title2").hide()
